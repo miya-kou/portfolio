@@ -1,0 +1,45 @@
+<% if logged_in? %>
+  <%= render 'login/logged_index' %>
+<% else %>
+ <h2><%= @task_2.to_s(:date_jp) %>　軟水チェックシート</h2>
+<table class="table table-bordered thead-dark">
+ <table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">前回再生時</th>
+      <th scope="col">次回予測</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @task %></td>
+      <td><%= @task+100 %></td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered thead-dark">
+ <table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">日付</th>
+      <th scope="col">点検者</th>
+      <th scope="col">判定</th>
+      <th scope="col">軟水メータ(L)</th>
+      <th scope="col">使用量(L)</th>
+      <th scope="col">再生</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @tasks.each do |task| %>
+    <tr>
+      <td><%= link_to task.date.to_s(:datetime_jp), task %></td>
+      <td><%= task.name %></td>
+      <td><%= task.judgmente %></td>
+      <td><%= task.meter %></td>
+      <td></td>
+      <td><%= task.playback %></td>
+    </tr>
+    <%  end %>
+  </tbody>
+</table>
+<% end %>

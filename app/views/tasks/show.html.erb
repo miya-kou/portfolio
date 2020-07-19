@@ -1,0 +1,39 @@
+<% if logged_in? %>
+  <%= render 'login/logged_show' %>
+<% else %>
+<%= render 'helps/title' %>
+<div id="box"></div>
+<table class="table table-bordered">
+  <tr>
+    <th>名前</th>
+    <td><%= @task.name %></td>
+  </tr>
+  <tr>
+    <th>日付</th>
+    <td><%= @task.date.to_s(:datetime_jp) %></td>
+  </tr>
+  <tr>
+    <th>判定</th>
+    <td><%= @task.judgmente %></td>
+  </tr>
+  <tr>
+    <th>軟水メーター</th>
+    <td><%= @task.meter %></td>
+  </tr>
+    <tr>
+    <th>使用量</th>
+    <td><%= @task.meter %></td>
+  </tr>
+  <tr>
+    <th>再生</th>
+    <td><%= @task.playback %></td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <th>詳細</th>
+  <tr>
+    <td><%= @task.explanation %></td>
+  </tr>
+</table>
+<% end %>
