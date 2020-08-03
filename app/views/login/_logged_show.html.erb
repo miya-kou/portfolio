@@ -1,7 +1,12 @@
+<% if logged_in? %>
+<%= link_to 'このメッセージを編集する', edit_task_path(@task), class: 'btn btn-light' %>
+<%= link_to 'このメッセージを削除する', @task, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+<% end %>
 <table class="table table-bordered">
+</br>　
   <tr>
     <th>名前</th>
-    <td><%= @task.name %></td>
+    <td><%= @task.user.name %></td>
   </tr>
   <tr>
     <th>日付</th>
@@ -27,6 +32,3 @@
     <td><%= @task.explanation %></td>
   </tr>
 </table>
-
-<%= link_to 'このメッセージを編集する', edit_task_path(@task), class: 'btn btn-light' %>
-<%= link_to 'このメッセージを削除する', @task, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
